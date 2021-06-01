@@ -17,9 +17,11 @@ ng serve
 Application Use
 
 1. Last 30 days cases (INDIA) report
- ![Last 30 days cases (INDIA) report](https://github.com/ungaralapradeep/covid-dashboard/blob/eb7a3086bf3734b53a30c1b1624134303898966e/screenshoots/Capture.PNG "Optional Title")
+![Last 30 days cases (INDIA) report](https://github.com/ungaralapradeep/covid-dashboard/blob/eb7a3086bf3734b53a30c1b1624134303898966e/screenshoots/Capture.PNG "Optional Title")
   
 2. Yesterday status (USA)
+![Last 30 days cases (INDIA) report](https://github.com/ungaralapradeep/covid-dashboard/blob/eb7a3086bf3734b53a30c1b1624134303898966e/screenshoots/Capture1.PNG "Optional Title")
 3. Total cases (USA)
+![Last 30 days cases (INDIA) report](https://github.com/ungaralapradeep/covid-dashboard/blob/eb7a3086bf3734b53a30c1b1624134303898966e/screenshoots/Capture2.PNG "Optional Title")
 
 
