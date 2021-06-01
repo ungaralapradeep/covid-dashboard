@@ -17,6 +17,9 @@ ng serve
 Application Use
 
 1. Last 30 days cases (INDIA) report
-   https://github.com/akveo/ngx-admin/blob/7b2be348733d393c0a5bf4c9064b0b9f17129580/src/assets/images/jack.png
+ ![Last 30 days cases (INDIA) report](https://github.com/ungaralapradeep/covid-dashboard/blob/eb7a3086bf3734b53a30c1b1624134303898966e/screenshoots/Capture.PNG "Optional Title")
+  
 2. Yesterday status (USA)
 3. Total cases (USA)
+
+
