@@ -1,0 +1,52 @@
+<div class="container p-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 p-5  d-none d-sm-block">
+                <img src="./assets/images/left-image.png" class="rounded w-100 img-responsive" />
+
+            </div>
+            <div class="col-md-4">
+
+                <div class="pt-5">
+                    <h3>{{appConstants.login}}</h3>
+                    <p>{{appConstants.login_label_description}}</p>
+                    <form [formGroup]="loginFormgroup" (ngSubmit)="logIn()">
+                        <div formGroupName="loginInfo">
+                            <section>
+                                <label>{{appConstants.username}}</label>
+                                <input type="text" class="form-control" formControlName="username" name="username"
+                                    required>
+                                <div class="help-block"
+                                    *ngIf="loginFormgroup.get('loginInfo.username').invalid && (loginFormgroup.get('loginInfo.username').dirty || loginFormgroup.get('loginInfo.username').touched)">
+                                    <p class="text-danger"
+                                        *ngIf="loginFormgroup.get('loginInfo.username').errors?.required">
+                                        {{appConstants.username_required}}</p>
+                                </div>
+                            </section>
+                            <section>
+                                <label>{{appConstants.password}}</label>
+                                <input type="password" class="form-control" formControlName="password" name="password"
+                                    required>
+                                <div class="help-block"
+                                    *ngIf="loginFormgroup.get('loginInfo.password').invalid && (loginFormgroup.get('loginInfo.password').dirty || loginFormgroup.get('loginInfo.password').touched)">
+                                    <p class="text-danger"
+                                        *ngIf="loginFormgroup.get('loginInfo.password').errors?.required">
+                                        {{appConstants.password_required}}</p>
+                                </div>
+                            </section>
+                        </div>
+                        <br>
+                        <button class="btn btn-outline-primary btn-block" type="submit">{{appConstants.signup}}</button>
+                    </form>
+                    <div class="p-3 text-center">
+                        <p>
+                            {{appConstants.no_account}}
+                            <a class="link"> {{appConstants.signup}}</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

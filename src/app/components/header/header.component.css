@@ -1,0 +1,57 @@
+header {
+  box-shadow: 0 3px 5px -1px rgb(0 0 0 / 2%), 0 6px 10px 0 rgb(0 0 0 / 1%),
+    0 1px 18px 0 rgb(0 0 0 / 2%);
+  position: sticky;
+  top: 0px;
+  background-color: #fff;
+  z-index: 999;
+  padding: 5px 50px;
+  font-weight: 300;
+}
+
+.title {
+  font-family: "Dancing_script";
+  font-weight: 700px;
+  font-size: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: sienna;
+}
+
+.logo {
+  width: 160px;
+  height: auto;
+}
+
+.search-button {
+  height: 32px;
+  margin-left: -2px;
+  border: 1px solid;
+  border-radius: 0px 10px 10px 0px;
+}
+
+header .mat-icon {
+  line-height: 30px;
+}
+
+header :focus-visible {
+  outline: none;
+}
+
+header a {
+  color: #414e5a;
+  font-weight: 300 !important;
+}
+
+header input[type="text"] {
+  border: solid 1px #dee2e6;
+  padding: 5px 10px;
+  border-radius: 10px 0px 0px 10px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.width-200 {
+  width: 200px;
+}

@@ -1,0 +1,132 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="alert alert-success mt-2">
+                <strong>Welcome! </strong> {{this.auth?.loginDetails?.username}}
+            </div>
+
+
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>{{appConstants.yesterday_status_usa}}</h3>
+                            <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                                [colors]="pieChartColors" [legend]="pieChartLegend">
+                            </canvas>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>{{appConstants.last30days_india}}</h3>
+                            <div style="display: block;">
+                                <canvas baseChart width="400" height="200" [datasets]="lineChartData"
+                                    [labels]="lineChartLabels" [colors]="lineChartColors" [legend]="lineChartLegend"
+                                    [chartType]="lineChartType" [plugins]="lineChartPlugins">
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="col-md-12 mt-20 mb-20">
+            <div class="row">
+                <div class="col-md-12">
+                    <br>
+                    <h3>{{appConstants.total_cases_usa}}</h3>
+                    <ag-grid-angular style="width: 100%; height: 400px;" class="ag-theme-alpine" [rowData]="rowData"
+                        [columnDefs]="columnDefs">
+                    </ag-grid-angular>
+                </div>
+
+            </div>
+            <br><br>
+        </div>
+
+
+
+    </div>
+</div>
+
+<!-- editProfile modal -->
+<div class="modal fade" id="editProfile" tabindex="-1" role="dialog" aria-labelledby="editProfile" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">{{appConstants.edit_profile}}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editProfileFromGroup" name="editProfileFromGroup">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>{{appConstants.username}}<span class="mandatory-field">*</span></label>
+                            <input type="text" class="form-control" placeholder="Username" formControlName="Username" />
+                            <div class="help-block"
+                                *ngIf="editProfileFromGroup.get('Username').invalid && (editProfileFromGroup.get('Username').dirty || editProfileFromGroup.get('Username').touched)">
+                                <p class="text-danger" *ngIf="editProfileFromGroup.get('Username').errors?.required">
+                                    {{appConstants.required}}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>{{appConstants.lastname}}</label>
+                            <input type="text" class="form-control" placeholder="last name"
+                                formControlName="LastName" />
+
+
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="form-group col-md-6">
+                            <label>{{appConstants.married_status}}<span class="mandatory-field">*</span></label>
+                            <select class="form-control" formControlName="MaritalStatus">
+                                <option value='' disabled>Select</option>
+                                <option value="Single"> Single</option>
+                                <option value="Married"> Married</option>
+                            </select>
+                            <div class="help-block"
+                                *ngIf="editProfileFromGroup.get('MaritalStatus').invalid && (editProfileFromGroup.get('MaritalStatus').dirty || editProfileFromGroup.get('MaritalStatus').touched)">
+                                <p class="text-danger"
+                                    *ngIf="editProfileFromGroup.get('MaritalStatus').errors?.required">
+                                    {{appConstants.required}}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>{{appConstants.father_name}}</label>
+                            <input type="text" class="form-control" placeholder="Father name"
+                                formControlName="FatherName" />
+
+                        </div>
+                        <div class="col-md-6 form-group" *ngIf="matritalStatus == 'Married'">
+                            <label>{{appConstants.spouse_name}} <span class="mandatory-field">*</span></label>
+                            <input type="text" class="form-control" placeholder="Spouse name"
+                                formControlName="SpouseName" />
+                            <div class="help-block"
+                                *ngIf="editProfileFromGroup.get('SpouseName').invalid && (editProfileFromGroup.get('SpouseName').dirty || editProfileFromGroup.get('SpouseName').touched)">
+                                <p class="text-danger" *ngIf="editProfileFromGroup.get('SpouseName').errors?.required">
+                                    {{appConstants.required}}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)='updateDetails();'>Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
