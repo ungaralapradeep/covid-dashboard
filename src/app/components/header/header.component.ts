@@ -1,7 +1,7 @@
-import { Component, OnInit, ContentChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/Auth/auth.service';
-import { appConstants } from '../../constants/app.constants';
+import { AuthService } from 'services/Auth/auth.service';
+import { appConstants } from 'constants/app.constants';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { appConstants } from '../../constants/app.constants';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  
+
   public isAuthenticated: boolean = false;
   public appConstants = appConstants;
 

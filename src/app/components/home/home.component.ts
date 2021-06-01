@@ -1,12 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { ToastrService } from 'ngx-toastr';
-import { DashboardService } from '../../services/dashboard/dashboard.service';
-import { Color, BaseChartDirective, Label } from 'ng2-charts';
-import { AuthService } from 'src/app/services/Auth/auth.service';
-
-import { appConstants } from '../../constants/app.constants';
+import { DashboardService } from 'services/dashboard/dashboard.service';
+import { Color, Label } from 'ng2-charts';
+import { AuthService } from 'services/Auth/auth.service';
+import { appConstants } from 'constants/app.constants';
 
 
 @Component({
@@ -15,31 +14,27 @@ import { appConstants } from '../../constants/app.constants';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  //  varibles 
-  matritalStatus: string = '';
-  editProfileFromGroup: FormGroup;
+
+  public matritalStatus: string = '';
+  public editProfileFromGroup: FormGroup;
   public appConstants = appConstants;
-
-
-
-  chartColors = {
-    'cases': { // blue
+  private chartColors = {
+    'cases': {
       backgroundColor: 'rgba(0,0,255,0.3)',
       borderColor: 'rgba(0,0,255,0.3)',
 
     },
-    'recovered': { // green 
+    'recovered': {
       backgroundColor: 'rgba(0,255,0,0.3)',
       borderColor: 'rgba(0,255,0,0.3)',
 
     },
-    'deaths': { // red
+    'deaths': {
       backgroundColor: 'rgba(255,0,0,0.3)',
       borderColor: 'rgba(255,0,0,0.3)',
 
     }
   }
-
 
   // line-chart
   public lineChartData: ChartDataSets[] = [];
@@ -63,7 +58,7 @@ export class HomeComponent implements OnInit {
 
 
   // ag-grid 
-  columnDefs = [
+  public columnDefs = [
     { field: 'state', sortable: true, filter: true },
     { field: 'cases', sortable: true, filter: true },
     { field: 'active', sortable: true, filter: true },
@@ -73,49 +68,39 @@ export class HomeComponent implements OnInit {
     { field: 'testsPerOneMillion', sortable: true, filter: true },
     { field: 'deathsPerOneMillion', sortable: true, filter: true }
   ];
-  rowData = [];
+  public rowData = [];
 
 
-  // Methods start 
   getStatesCurrentStatus() {
     this._dashboradservice.getStatesCurrentStatus().subscribe(
       (response: any) => {
         this.rowData = response;
       }, (err: any) => {
       });
-
   }
   getYesterdayStatus() {
     this._dashboradservice.getYesterdayStatus().subscribe(
       (response: any) => {
         this.pieChartData = [response.deaths, response.recovered, response.cases]
-
       }, (err: any) => {
       });
-
   }
 
   getHistory() {
     this._dashboradservice.getLast30DaysHistory('india').subscribe(
       (response: any) => {
-
         let keys = Object.keys(response.timeline);
-
         this.lineChartData.pop();
         for (let key of keys) {
           let values = Object.values(response.timeline[key]);
           this.lineChartData.push({
             'data': values, 'label': key, ...this.chartColors[key]
           });
-
         }
-
         this.lineChartLabels = Object.keys(response.timeline['cases']);
-
       }, (err: any) => {
         console.log('getLast30DaysHistory errro', err);
       });
-
   }
 
   updateDetails() {
@@ -124,27 +109,21 @@ export class HomeComponent implements OnInit {
       this.auth.loginDetails.username = this.editProfileFromGroup.value.Username
       document.getElementById('editProfile').click();
       this._toastr.success(appConstants.update_success);
-
     } else {
       this._toastr.error(appConstants.all_required_error);
     }
   }
 
-
-
   constructor(private _dashboradservice: DashboardService,
     private _formBuilder: FormBuilder,
     private _toastr: ToastrService,
     public auth: AuthService) {
-
-
   }
 
   ngOnInit(): void {
     this.getStatesCurrentStatus();
     this.getYesterdayStatus();
     this.getHistory();
-
     this.editProfileFromGroup = this._formBuilder.group({
       Username: [, [Validators.required]],
       LastName: [],
@@ -152,7 +131,6 @@ export class HomeComponent implements OnInit {
       FatherName: [],
       SpouseName: []
     })
-
 
     this.editProfileFromGroup.patchValue({
       Username: this.auth.loginDetails.username

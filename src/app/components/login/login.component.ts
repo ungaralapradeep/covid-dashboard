@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
-import { ProfileService } from 'src/app/services/profile/profile.service';
-import { AuthService } from 'src/app/services/Auth/auth.service';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ProfileService } from 'services/profile/profile.service';
+import { AuthService } from 'services/Auth/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { appConstants } from '../../constants/app.constants';
+import { appConstants } from 'constants/app.constants';
 
 
 

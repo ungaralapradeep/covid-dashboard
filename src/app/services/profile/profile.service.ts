@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { tap, map } from 'rxjs/operators';
 import { AuthService } from '../Auth/auth.service';
-import { User } from 'src/app/models/user.model';
 import { stringify } from '@angular/compiler/src/util';
 @Injectable({
   providedIn: 'root'

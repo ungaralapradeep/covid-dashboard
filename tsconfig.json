@@ -3,6 +3,17 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "components/*": [
+        "src/app/components/*"
+      ],
+      "constants/*": [
+        "src/app/constants/*"
+      ],
+      "services/*": [
+        "src/app/services/*"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
